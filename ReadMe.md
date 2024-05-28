@@ -25,20 +25,6 @@ Note that the test cases are created so as to rigourosly check if the lazy evalu
 first ((2,(true+4) / 0))
 ```
 ```
-Fst(
-  Pair(
-    Num(2),
-    Divd(
-      Plus(
-        Bool(true),
-        Num(4)
-      ),
-      Num(0)
-    )
-  )
-)
-```
-```
 2
 ```
 
@@ -53,47 +39,7 @@ let omega = (fun x -> (x x)) (fun x -> (x x)) in
 )
 ```
 
-```
-App(
-  Abs("omega",
-    App(
-      Abs("f",
-        Fst(
-          App(
-            App(
-              V("f"),
-              Num(12)
-            ),
-            V("omega")
-          )
-        )
-      ),
-      Abs("x",
-        Abs("y",
-          Pair(
-            V("x"),
-            V("y")
-          )
-        )
-      )
-    )
-  ),
-  App(
-    Abs("x",
-      App(
-        V("x"),
-        V("x")
-      )
-    ),
-    Abs("x",
-      App(
-        V("x"),
-        V("x")
-      )
-    )
-  )
-)
-```
+
 ```
 12
 ```
@@ -107,24 +53,6 @@ let omega = 1/0 in
 ```
 
 ```
-App(
-  Abs("omega",
-    IfTE(
-      Bool(true),
-      Num(1),
-      Plus(
-        V("omega"),
-        Num(12)
-      )
-    )
-  ),
-  Divd(
-    Num(1),
-    Num(0)
-  )
-)
-```
-```
 1
 ```
 ### tc3
@@ -135,30 +63,6 @@ let omega = 1/0 in
 )
 ```
 
-```
-App(
-  Abs("omega",
-    Plus(
-      App(
-        Abs("x",
-          Num(2)
-        ),
-        V("omega")
-      ),
-      Fst(
-        Pair(
-          Num(12),
-          V("omega")
-        )
-      )
-    )
-  ),
-  Divd(
-    Num(1),
-    Num(0)
-  )
-)
-```
 ```
 14
 ```
@@ -174,28 +78,6 @@ let x = 2 in
 ```
 
 ```
-App(
-  Abs("x",
-    App(
-      Abs("y",
-        Plus(
-          V("x"),
-          Num(2)
-        )
-      ),
-      Divd(
-        Num(2),
-        Minus(
-          Num(2),
-          V("x")
-        )
-      )
-    )
-  ),
-  Num(2)
-)
-```
-```
 4
 ```
 ### tc5
@@ -209,41 +91,7 @@ let omega = (fun x -> (x x)) (fun x -> (x x)) in
 )
 ```
 
-```
-App(
-  Abs("omega",
-    App(
-      Abs("cond",
-        IfTE(
-          V("cond"),
-          Num(1),
-          V("omega")
-        )
-      ),
-      Fst(
-        Pair(
-          Bool(true),
-          V("omega")
-        )
-      )
-    )
-  ),
-  App(
-    Abs("x",
-      App(
-        V("x"),
-        V("x")
-      )
-    ),
-    Abs("x",
-      App(
-        V("x"),
-        V("x")
-      )
-    )
-  )
-)
-```
+
 ```
 1
 ```
